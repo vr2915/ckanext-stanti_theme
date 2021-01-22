@@ -1,4 +1,5 @@
-{% block header_wrapper %} {% block header_account %}
+{% block header_wrapper %} 
+{% block header_account %}
 <div class="account-masthead">
   <div class="container">
     <hgroup class="{{ g.header_class }} navbar-left">
@@ -7,10 +8,13 @@
         <a href="https://www.gov.sg" style="text-decoration:none;"><font color="767983">A Singapore Government Agency Website</font></a>
       </h4>
     </hgroup>
-    {% block header_account_container_content %} {% if c.userobj %}
+    {% block header_account_container_content %} 
+    {% if c.userobj %}
     <div class="account avatar authed" data-module="me" data-me="{{ c.userobj.id }}">
       <ul class="list-unstyled">
-        {% block header_account_logged %} {% if c.userobj.sysadmin %}
+        {% block header_account_logged %}
+        <!-- 
+        {% if c.userobj.sysadmin %}
         <li>
           <a href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}">
             <i class="fa fa-gavel" aria-hidden="true"></i>
@@ -18,12 +22,14 @@
           </a>
         </li>
         {% endif %}
+        -->
         <li>
           <a href="{{ h.url_for('user.read', id=c.userobj.name) }}" class="image" title="{{ _('View profile') }}">
                   {{ h.user_image((c.user if c and c.user else ''), size=22) }}
                   <span class="username">{{ c.userobj.display_name }}</span>
                 </a>
         </li>
+        <!--
         {% set new_activities = h.new_activities() %}
         <li class="notifications {% if new_activities > 0 %}notifications-important{% endif %}">
           {% set notifications_tooltip = ngettext('Dashboard (%(num)d new item)', 'Dashboard (%(num)d new items)', new_activities)
@@ -41,14 +47,19 @@
             <span class="text">{{ _('Profile settings') }}</span>
           </a>
         </li>
-        {% endblock %} {% block header_account_log_out_link %}
+        
+        {% endblock %} 
+        {% block header_account_log_out_link %}
         <li>
           <a href="{{ h.url_for('/user/_logout') }}" title="{{ _('Log out') }}">
             <i class="fa fa-sign-out" aria-hidden="true"></i>
             <span class="text">{{ _('Log out') }}</span>
           </a>
         </li>
-        {% endblock %} {% endblock %}
+        {% endblock %}
+        --> 
+        {% endblock %}
+        
       </ul>
     </div>
     {% else %}
